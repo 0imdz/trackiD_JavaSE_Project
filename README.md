@@ -1,2 +1,2 @@
-# ProyectoFinalProgramacion_Prototipo
+** Prototipo trackiD **
 ![Inicio_sesión](1.jpg)
