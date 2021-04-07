@@ -1,1 +1,1 @@
-![imagen](ProyectoFinalProgramacion_Prototipo/images/Biblioteca---trackiD.jpg)
+![imagen](images/3.jpg)
