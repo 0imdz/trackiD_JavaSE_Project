@@ -6,6 +6,6 @@
 ![nuevo_lanzamiento](images/nuevo_lanzamiento.jpg)
 ![nuevo_lanzamiento_2](images/nuevo_lanzamiento_2.jpg)
 
-**trackiD es una aplicación de escritorio que recrea el proceso de distribución de música en las 
+*trackiD es una aplicación de escritorio que recrea el proceso de distribución de música en las 
 diferentes plataformas digitales, ya que para subir contenido a éstas, es necesaria una 
-plataforma intermediaria.**
+plataforma intermediaria.*
