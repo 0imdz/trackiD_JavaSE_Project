@@ -80,5 +80,5 @@
             </plugin>
         </plugins>
     </build>
-    <name>Prototipo JavaFX</name>
+    <name>mavenproject1</name>
 </project>

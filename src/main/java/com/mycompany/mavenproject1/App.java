@@ -17,9 +17,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("panel_usuario"), 1200, 500);
+        scene = new Scene(loadFXML("primary"), 1200, 500);
         stage.setScene(scene);
         stage.show();
+        stage.setTitle("Inicio de sesión - trackiD");
     }
 
     static void setRoot(String fxml) throws IOException {
