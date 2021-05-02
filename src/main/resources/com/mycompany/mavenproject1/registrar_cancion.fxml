@@ -5,32 +5,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject1.NewSongController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="328.0" layoutY="158.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
-      <Label layoutX="131.0" layoutY="155.0" prefHeight="30.0" prefWidth="162.0" text="Título" textFill="WHITE">
+      <TextField fx:id="txtTitulo" layoutX="194.0" layoutY="115.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="14.0" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtAutoria" layoutX="194.0" layoutY="150.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtFormato" layoutX="194.0" layoutY="190.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <Label layoutX="31.0" layoutY="119.0" prefHeight="30.0" prefWidth="194.0" text="Título" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="131.0" layoutY="193.0" prefHeight="30.0" prefWidth="162.0" text="Autoría" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="157.0" prefHeight="30.0" prefWidth="192.0" text="Autoría" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="528.0" layoutY="20.0" prefHeight="59.0" prefWidth="144.0" text="trackiD">
+      <Label layoutX="572.0" layoutY="48.0" prefHeight="59.0" prefWidth="144.0" text="trackiD">
          <font>
             <Font name="Arial Rounded MT Bold" size="40.0" />
          </font>
@@ -51,7 +42,7 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Label layoutX="127.0" layoutY="73.0" prefHeight="59.0" prefWidth="370.0" text="Nuevo lanzamiento">
+      <Label layoutX="36.0" layoutY="41.0" prefHeight="59.0" prefWidth="370.0" text="Nuevo lanzamiento">
          <font>
             <Font name="Roboto" size="42.0" />
          </font>
@@ -72,54 +63,58 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Separator layoutX="155.0" layoutY="99.0" opacity="0.38" prefHeight="67.0" prefWidth="313.0" />
-      <Button layoutX="420.0" layoutY="437.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="335.0" style="-fx-background-color: white; -fx-opacity: 0.60;" text="Seleccionar pista(s)">
+      <Separator layoutX="64.0" layoutY="67.0" opacity="0.38" prefHeight="67.0" prefWidth="313.0" />
+      <Button fx:id="btnAnyadir" layoutX="30.0" layoutY="493.0" mnemonicParsing="false" onAction="#insercionCanciones" prefHeight="32.0" prefWidth="369.0" style="-fx-background-color: white; -fx-opacity: 0.60;" text="Añadir">
          <font>
             <Font name="Roboto Light" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="131.0" layoutY="232.0" prefHeight="30.0" prefWidth="162.0" text="Formato de álbum" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="196.0" prefHeight="30.0" prefWidth="190.0" text="Formato de álbum" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="131.0" layoutY="268.0" prefHeight="30.0" prefWidth="162.0" text="Género" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="232.0" prefHeight="30.0" prefWidth="441.0" text="Género" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="131.0" layoutY="341.0" prefHeight="30.0" prefWidth="162.0" text="Sello" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="311.0" prefHeight="30.0" prefWidth="440.0" text="Sello" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="132.0" layoutY="377.0" prefHeight="30.0" prefWidth="162.0" text="Portada" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="269.0" prefHeight="30.0" prefWidth="440.0" text="Código UPC" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="328.0" layoutY="195.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
-      <Label layoutX="131.0" layoutY="305.0" prefHeight="30.0" prefWidth="162.0" text="Código UPC" textFill="WHITE">
+      <TextField fx:id="txtUPC" layoutX="194.0" layoutY="260.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <ComboBox fx:id="cbGenero" layoutX="194.0" layoutY="225.0" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <Label layoutX="31.0" layoutY="351.0" prefHeight="30.0" prefWidth="439.0" text="Contenido explícito" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="328.0" layoutY="304.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
-      <Button layoutX="420.0" layoutY="377.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white; -fx-opacity: 0.40;" text="Seleccionar archivo" />
-      <ComboBox layoutX="328.0" layoutY="231.0" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
-      <ComboBox layoutX="328.0" layoutY="267.0" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
-      <Label layoutX="642.0" layoutY="193.0" prefHeight="30.0" prefWidth="122.0" text="Contenido explícito" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="432.0" prefHeight="30.0" prefWidth="440.0" text="Fecha de lanzamiento" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <CheckBox layoutX="827.0" layoutY="198.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="0.0" />
-      <Label layoutX="642.0" layoutY="155.0" prefHeight="30.0" prefWidth="162.0" text="Fecha de lanzamiento" textFill="WHITE">
+      <DatePicker fx:id="dpCalendario" layoutX="194.0" layoutY="424.0" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtSello" layoutX="194.0" layoutY="303.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtExplicit" layoutX="194.0" layoutY="343.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <ListView fx:id="tblCanciones" layoutX="414.0" layoutY="114.0" prefHeight="356.0" prefWidth="460.0" style="-fx-background-color: grey;" />
+      <Label layoutX="31.0" layoutY="396.0" prefHeight="30.0" prefWidth="439.0" text="Número de pistas" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <DatePicker layoutX="827.0" layoutY="155.0" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
-      <TextField layoutX="328.0" layoutY="339.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtNPistas" layoutX="194.0" layoutY="387.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <Label fx:id="lblPrueba" layoutX="531.0" layoutY="494.0" prefHeight="30.0" prefWidth="194.0" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
