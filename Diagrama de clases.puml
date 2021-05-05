@@ -1,0 +1,99 @@
+@startuml
+
+class Usuario{
+    int idusuario
+    Cadena nombre_usuario
+    Cadena password
+    Cadena pregunta_seguridad
+    Cadena respuesta_seguridad
+}
+
+class Lanzamiento{
+    Vuelo vuelo
+    Cadena tarifa
+    Cadena usuario
+    Lista asientos
+}
+
+class Aerolinea{
+    enum
+}
+
+class Estado_vuelo{
+    enum
+}
+
+class Estado_asiento{
+    enum
+}
+
+class Tarifa{
+    enum
+}
+
+class Usuario{
+    Cadena email
+    Cadena contrasenya
+    Cadena tarjeta_credito
+    void cambiar_contrasenya()
+    void validar_tarjeta()
+    void validaciones()
+}
+
+class Itinerario{
+    Lista personas
+    Usuario usuario
+}
+
+class Pasajero{
+    Cadena nombre
+    Cadena dni
+    Cadena numero_billete
+    Asiento asiento
+    void checkDNI()
+}
+
+class Vuelo{
+    Cadena origen
+    Cadena destino
+    Float Coste
+    Cadena fecha-hora
+    Aerolinea aerolinea
+    Estado estado 
+    Lista asientos
+    void checkDisponibilidad()
+    void checkEstado()
+}
+
+class Compra{
+    Itinerario itinerario
+    Lista pasajeros
+    void crearBillete()
+    void asignarAsiento()
+    void calcularPrecio()
+}
+
+class SRV{
+    Usuario usuario
+    void login()
+    void registro()
+    void reserva()
+    void compra()
+    void consulta()
+    void modificar_perfil()
+}
+
+class SRV *-- class Usuario
+class SRV *-- class Vuelo
+class SRV *-- class Itinerario
+class SRV *-- class Compra
+class Reserva *-- class Itinerario
+class Asiento --* class Vuelo
+class Compra *-- class Pasajero
+class Aerolinea -- class Vuelo
+class Estado_vuelo -- class Vuelo
+class Estado_asiento -- class Asiento
+class Tarifa -- class Reserva
+class Itinerario *-- class Usuario
+
+@enduml

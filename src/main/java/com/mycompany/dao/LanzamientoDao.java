@@ -7,9 +7,11 @@ package com.mycompany.dao;
 
 import com.mycompany.mavenproject1.App;
 import com.mycompany.models.Cancion;
+import com.mycompany.models.Lanzamiento;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,7 +25,7 @@ import java.util.Properties;
  *
  * @author Ismael
  */
-public class CancionDao {
+public class LanzamientoDao {
     private Connection conexion;
   
     public void conectar() throws ClassNotFoundException, SQLException, IOException{
@@ -51,23 +53,22 @@ public class CancionDao {
     }
     
     public void guardarCancion(Cancion c) throws SQLException{
-        String sql = "INSERT INTO trackid.cancion (UPC, TITULO, AUTORIA, GENERO, FORMATO, FECHA_LANZAMIENTO, PISTAS, SELLO, C_EXPLICITO, USUARIO_ID) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO trackid.cancion (UPC, TITULO, AUTORIA, GENERO, FECHA_LANZAMIENTO, SELLO, C_EXPLICITO, DURACION, USUARIO_ID) VALUES(?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, c.getUpc());
         sentencia.setString(2, c.getTitulo());
         sentencia.setString(3, c.getAutoria());
         sentencia.setString(4, c.getGenero());
-        sentencia.setString(5, c.getFormato());
-        sentencia.setDate(6, c.getFecha_lanzamiento());
-        sentencia.setInt(7, c.getN_pistas());
-        sentencia.setString(8, c.getSello());
-        sentencia.setString(9, String.valueOf(c.getC_explicito()));
-        sentencia.setInt(10, c.getUsuario_id());
+        sentencia.setDate(5, c.getFecha_lanzamiento());
+        sentencia.setString(6, c.getSello());
+        sentencia.setString(7, String.valueOf(c.getC_explicito()));
+        sentencia.setInt(8, c.getDuracion());
+        sentencia.setInt(9, c.getUsuario_id());
         sentencia.executeUpdate();
-    }
+    }   
     
-    public List<Cancion> listCanciones(int usuario_id) throws SQLException { //no declaro int idusuario
+    public List<Cancion> listCancion(int usuario_id) throws SQLException { //no declaro int idusuario
                                                                //pq lo paso en App.user.getIdusuario()
         
     List<Cancion> canciones = new ArrayList<>();
@@ -89,12 +90,11 @@ public class CancionDao {
             c.setTitulo(resultado.getString(2));
             c.setAutoria(resultado.getString(3));
             c.setGenero(resultado.getString(4));
-            c.setFormato(resultado.getString(5));
-            c.setFecha_lanzamiento(resultado.getDate(6));
-            c.setN_pistas(resultado.getInt(7));
-            c.setSello(resultado.getString(8));
-            c.setC_explicito(resultado.getString(9).charAt(0));
-//            c.setUsuario_id(resultado.getInt(10));
+            c.setFecha_lanzamiento(resultado.getDate(5));
+            c.setSello(resultado.getString(6));
+            c.setC_explicito(resultado.getString(7).charAt(0));
+            c.setDuracion(resultado.getInt(8));
+            c.setUsuario_id(resultado.getInt(9));
             canciones.add(c);
             //(resultado está ejecutando la query de la db)se añade a arraylist canciones el valor de UPC
             //¿de dónde sale el valor dado a variable UPC?: a que resultado(variable que prepara y ejecuta cada query)
@@ -103,21 +103,21 @@ public class CancionDao {
         return canciones;
     }
     
-    public void updateCancion(Cancion c) throws SQLException{
-        String sql = "UPDATE trackid.cancion (UPC, TITULO, AUTORIA, GENERO, FORMATO, FECHA_LANZAMIENTO, PISTAS, SELLO, C_EXPLICITO, USUARIO_ID) VALUES(?,?,?,?,?,?,?,?,?,?)";
+    public void modificarCancion(Cancion c) throws SQLException {
+        String sql = "{call spLanzamientoModified (?,?,?,?,?,?,?,?)}";
 
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        CallableStatement sentencia = conexion.prepareCall(sql);
         sentencia.setInt(1, c.getUpc());
         sentencia.setString(2, c.getTitulo());
         sentencia.setString(3, c.getAutoria());
         sentencia.setString(4, c.getGenero());
-        sentencia.setString(5, c.getFormato());
-        sentencia.setDate(6, c.getFecha_lanzamiento());
-        sentencia.setInt(7, c.getN_pistas());
-        sentencia.setString(8, c.getSello());
-        sentencia.setString(9, String.valueOf(c.getC_explicito()));
-        sentencia.setInt(10, c.getUsuario_id());
+        sentencia.setDate(5, c.getFecha_lanzamiento());
+        sentencia.setString(6, c.getSello());
+        sentencia.setString(7, String.valueOf(c.getC_explicito()));
+        sentencia.setInt(8, c.getDuracion());
         sentencia.executeUpdate();
+  
+        sentencia.execute();
     }
 }
 
