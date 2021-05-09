@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txtTitulo" layoutX="194.0" layoutY="130.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="14.0" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtAutoria" layoutX="194.0" layoutY="165.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <Label layoutX="31.0" layoutY="135.0" prefHeight="30.0" prefWidth="194.0" text="Título" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="167.0" prefHeight="30.0" prefWidth="192.0" text="Autoría" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="378.0" layoutY="8.0" prefHeight="59.0" prefWidth="144.0" text="trackiD">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="40.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.8666666666666667" centerY="0.3893129552593668" cycleMethod="REFLECT" radius="0.21962616822429903">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color blue="1.0" green="1.0" red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color blue="0.20000000298023224" green="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="30.0" layoutY="48.0" prefHeight="59.0" prefWidth="370.0" text="Añadir una canción">
+         <font>
+            <Font name="Roboto" size="42.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.5534350853839903" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color blue="0.4000000059604645" green="0.4000000059604645" red="0.4000000059604645" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color blue="1.0" green="1.0" red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button fx:id="btnAnyadir" layoutX="414.0" layoutY="493.0" mnemonicParsing="false" onAction="#insercionCanciones" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: white; -fx-opacity: 0.60;" text="Añadir">
+         <font>
+            <Font name="Roboto Light" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="31.0" layoutY="199.0" prefHeight="30.0" prefWidth="158.0" text="Género" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="236.0" prefHeight="30.0" prefWidth="216.0" text="Sello" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbGenero" layoutX="194.0" layoutY="200.0" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <Label layoutX="31.0" layoutY="272.0" prefHeight="30.0" prefWidth="196.0" text="Contenido explícito" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="339.0" prefHeight="30.0" prefWidth="170.0" text="Fecha de lanzamiento" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpCalendario" layoutX="194.0" layoutY="340.0" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtSello" layoutX="194.0" layoutY="235.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <TextField fx:id="txtExplicit" layoutX="194.0" layoutY="270.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <ListView fx:id="tblCanciones" layoutX="414.0" layoutY="130.0" prefHeight="357.0" prefWidth="460.0" style="-fx-background-color: grey;" />
+      <Label layoutX="31.0" layoutY="305.0" prefHeight="30.0" prefWidth="164.0" text="Duración" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDuracion" layoutX="194.0" layoutY="305.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="205.0" style="-fx-background-color: white; -fx-opacity: 0.40;" />
+      <Label fx:id="lblPrueba" layoutX="531.0" layoutY="494.0" prefHeight="30.0" prefWidth="0.0" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="730.0" layoutY="493.0" mnemonicParsing="false" onAction="#limpiarCancion" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: white; -fx-opacity: 0.60;" text="Limpiar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Roboto Light" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="30.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchToPerfil" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: white; -fx-opacity: 0.60;" text="Atrás">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Roboto Light" size="16.0" />
+         </font>
+      </Button>
+      <Separator layoutX="60.0" layoutY="74.0" opacity="0.38" prefHeight="67.0" prefWidth="305.0" />
+   </children>
+</AnchorPane>

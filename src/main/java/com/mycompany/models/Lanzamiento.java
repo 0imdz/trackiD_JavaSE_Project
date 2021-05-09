@@ -93,10 +93,10 @@ public class Lanzamiento {
 
     @Override
     public String toString() {
-        return "UPC: " + upc + 
-               " | TÍTULO: " + titulo + 
-               " | AUTORÍA: " + autoria + 
-               " | GÉNERO: " + genero;
+        return 
+               "TÍTULO: " + titulo + 
+               "   ||   AUTORÍA: " + autoria + 
+               "   ||   GÉNERO: " + genero;
 //               " | FECHA DE LANZAMIENTO: " + fecha_lanzamiento + 
 //               " | NÚMERO DE PISTAS: " + n_pistas + 
 //               " | SELLO: " + sello + 

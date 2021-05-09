@@ -35,7 +35,7 @@ public class LanzamientoDao {
 //        String username="root";
 //        String password="DBISMAELMARIA99";
         
-        Properties configuration = new Properties();
+        Properties configuration = new Properties();//objeti clase Properties
         configuration.load(new FileInputStream(new File(App.class.getResource("connectionDB.properties").getPath())));
         String host = configuration.getProperty("host");
         String port = configuration.getProperty("port");
@@ -53,18 +53,18 @@ public class LanzamientoDao {
     }
     
     public void guardarCancion(Cancion c) throws SQLException{
-        String sql = "INSERT INTO trackid.cancion (UPC, TITULO, AUTORIA, GENERO, FECHA_LANZAMIENTO, SELLO, C_EXPLICITO, DURACION, USUARIO_ID) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO trackid.cancion (TITULO, AUTORIA, GENERO, FECHA_LANZAMIENTO, SELLO, C_EXPLICITO, DURACION, USUARIO_ID) VALUES(?,?,?,?,?,?,?,?)";
 
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, c.getUpc());
-        sentencia.setString(2, c.getTitulo());
-        sentencia.setString(3, c.getAutoria());
-        sentencia.setString(4, c.getGenero());
-        sentencia.setDate(5, c.getFecha_lanzamiento());
-        sentencia.setString(6, c.getSello());
-        sentencia.setString(7, String.valueOf(c.getC_explicito()));
-        sentencia.setInt(8, c.getDuracion());
-        sentencia.setInt(9, c.getUsuario_id());
+//        sentencia.setInt( 1, c.getUpc());
+        sentencia.setString(1, c.getTitulo());
+        sentencia.setString(2, c.getAutoria());
+        sentencia.setString(3, c.getGenero());
+        sentencia.setDate(4, c.getFecha_lanzamiento());
+        sentencia.setString(5, c.getSello());
+        sentencia.setString(6, String.valueOf(c.getC_explicito()));
+        sentencia.setInt(7, c.getDuracion());
+        sentencia.setInt(8, c.getUsuario_id());
         sentencia.executeUpdate();
     }   
     
@@ -107,7 +107,7 @@ public class LanzamientoDao {
         String sql = "{call spLanzamientoModified (?,?,?,?,?,?,?,?)}";
 
         CallableStatement sentencia = conexion.prepareCall(sql);
-        sentencia.setInt(1, c.getUpc());
+        sentencia.setInt(1, c.getUpc());//no permito que se produzca la modificacion del upc
         sentencia.setString(2, c.getTitulo());
         sentencia.setString(3, c.getAutoria());
         sentencia.setString(4, c.getGenero());

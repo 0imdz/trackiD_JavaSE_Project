@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject1;
+import java.util.Optional;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -21,5 +23,13 @@ public class Alert_Util_1 {
         Alert alerta=new Alert(Alert.AlertType.INFORMATION);
         alerta.setContentText(mensaje);
         alerta.show();
+    }
+    
+    public static void mostrarConfirmacion(String mensaje){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Confirmar cambios");
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Estas seguro de confirmar la acción?");
+        Optional<ButtonType> action = alert.showAndWait();
     }
 }

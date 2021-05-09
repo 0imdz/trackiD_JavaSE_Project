@@ -36,12 +36,42 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
     
+    static void verPanel() throws IOException {
+        String fxml = "panelUsuario";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        PanelUsuarioController controller = new PanelUsuarioController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+       
+        controller.showCanciones();
+//        controller.initLists();
+//        controller.prueba();
+    }
+    
     static void cargarDatos() throws IOException {
         String fxml = "registrar_cancion";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
         // Give the controller access to the main app.
         NewSongController controller = new NewSongController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+       
+        controller.showCanciones();
+        controller.initLists();
+//        controller.prueba();
+    }
+    
+    static void anyadido() throws IOException {
+        String fxml = "registrar_cancion_1";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        NewSongController1 controller = new NewSongController1();
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());

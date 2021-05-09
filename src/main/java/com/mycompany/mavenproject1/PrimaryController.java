@@ -74,10 +74,9 @@ public class PrimaryController {
         for(int i=0; i<usuarios.size(); i++){
             if (txtUsername.getText().equals(usuarios.get(i).getNombre_usuario()) && txtPassword.getText().equals(usuarios.get(i).getPassword())){
                 App.setUsuario(usuarios.get(i));//usuario que proviene del arraylist
-                App.cargarDatos();
+                App.verPanel();
                 Alert_Util_1.mostrarInfo(String.valueOf("Has iniciado sesión como "+App.user.getNombre_usuario()));
                 salir=true; //salir del for
-               
             }
         }
         

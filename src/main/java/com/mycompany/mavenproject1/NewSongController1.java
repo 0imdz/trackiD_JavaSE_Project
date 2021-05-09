@@ -39,7 +39,7 @@ import javafx.scene.control.TextField;
  *
  * @author Ismael
  */
-public class NewSongController {
+public class NewSongController1 {
     
     private Usuario user;
     private Cancion cancionSel;
@@ -74,41 +74,7 @@ public class NewSongController {
     private Label lblPrueba;
     @FXML
     private TextField txtDuracion;
-    @FXML
-    private ComboBox cbCanciones;
     
-    @FXML
-    private void updateCancion(){
-        if (this.cancionSel == null) {
-            Alert_Util_1.mostrarInfo("No se ha seleccionado ninguna canción.");
-        }
-        Cancion cancion=new Cancion(
-                cancionSel.getUpc(),
-                txtTitulo.getText(), 
-                txtAutoria.getText(), 
-                cbGenero.getValue().toString(), 
-                Date.valueOf(dpCalendario.getValue()), 
-                txtSello.getText(),
-                App.user.getIdusuario(), //idusuario que esté con la sesión iniciada
-                txtExplicit.getText().charAt(0), 
-                Integer.parseInt(txtDuracion.getText()));
-        
-        LanzamientoDao ldao = new LanzamientoDao();
-//        cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
-        
-        try {
-            ldao.conectar();
-            ldao.modificarCancion(cancion);
-            Alert_Util_1.mostrarConfirmacion("Confirmame");
-            showCanciones();
-        }catch (IOException ex) {
-            Alert_Util_1.mostrarError("2" +ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            Alert_Util_1.mostrarError("3" +ex.getMessage());
-        } catch (SQLException ex) {
-            Alert_Util_1.mostrarError("4" +ex.getMessage());
-        }
-    }
     
     @FXML
     private void switchToPerfil() throws IOException{
@@ -118,7 +84,6 @@ public class NewSongController {
     @FXML
     private void limpiarCancion() {
 //        txtUPC.setText("");
-        cbCanciones.setValue("");
         txtTitulo.setText("");
         txtAutoria.setText("");
         cbGenero.setValue("");
@@ -132,6 +97,15 @@ public class NewSongController {
     @FXML
     private void insercionCanciones() throws IOException{
         LanzamientoDao ldao = new LanzamientoDao();
+        if (this.txtTitulo == null ||
+            this.txtAutoria == null ||
+            this.cbGenero == null ||
+            this.txtSello == null ||
+            this.txtExplicit == null ||
+            this.txtDuracion == null ||
+            this.dpCalendario == null) {
+            Alert_Util_1.mostrarInfo("No se permiten campos en blanco."); //duda: no funciona
+        }
         Cancion c = new Cancion(
                 -1,
                 txtTitulo.getText(), 
@@ -161,7 +135,6 @@ public class NewSongController {
         try {
             ldao.conectar();//meter try-catch
             canciones=ldao.listCancion(App.user.getIdusuario()); //llamada a getIdusuario
-            cbCanciones.setItems(FXCollections.observableList(canciones));
             tblCanciones.setItems(FXCollections.observableList(canciones));
             
         } catch (ClassNotFoundException ex) {
@@ -171,22 +144,22 @@ public class NewSongController {
         }
     }
     
-    private void cargarCancion(Cancion c) {
-//        txtUPC.setText(String.valueOf(c.getUpc()));
-        txtTitulo.setText(c.getTitulo());
-        txtAutoria.setText(c.getAutoria());
-        cbGenero.setValue(c.getGenero());
-        dpCalendario.setValue(c.getFecha_lanzamiento().toLocalDate());
-        txtSello.setText(c.getSello());
-        txtExplicit.setText(String.valueOf(c.getC_explicito()));
-        txtDuracion.setText(String.valueOf(c.getDuracion()));
-    }
+//    private void cargarCancion(Cancion c) {
+////        txtUPC.setText(String.valueOf(c.getUpc()));
+//        txtTitulo.setText(c.getTitulo());
+//        txtAutoria.setText(c.getAutoria());
+//        cbGenero.setValue(c.getGenero());
+//        dpCalendario.setValue(c.getFecha_lanzamiento().toLocalDate());
+//        txtSello.setText(c.getSello());
+//        txtExplicit.setText(String.valueOf(c.getC_explicito()));
+//        txtDuracion.setText(String.valueOf(c.getDuracion()));
+//    }
     
-    @FXML
-    public void seleccionarCancion(Event event) {
-        cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
-        cargarCancion(cancionSel);
-    }
+//    @FXML
+//    public void seleccionarCancion(Event event) {
+//        cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
+//        cargarCancion(cancionSel);
+//    }
 
     public void initLists(){
         cbGenero.setItems(generos);

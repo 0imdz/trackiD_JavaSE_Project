@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+:Usuario: -->(Creacion de cuenta)
+:Usuario: -->(Inicio de sesion)
+:Usuario: -->(CRUD lanzamiento)
+usecase UC1 as "Creacion de cuenta 
+--
+Include: Insercion de nuevo usuario
+usecase UC1 as "Inicio de sesion 
+--
+Include: Insercion de canciones
+--
+Include: Modificacion de canciones"
+:Usuario: --> (UC1)
+(UC1)<|-(Registro de cuenta):<<extends>>
+(UC1)<|-(Inicio de sesion):<<extends>>
+(UC1)<|-(Insercion de canciones):<<extends>>
+@enduml
