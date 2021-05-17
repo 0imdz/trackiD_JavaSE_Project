@@ -86,6 +86,6 @@ public class Usuario {
     
     //password mayor o igual a ocho
     public boolean checkPassword(String password){
-        return password.length() >= 8;
+        return password.matches(".*[A-Z].*") && password.length() >= 8;
     }
 }

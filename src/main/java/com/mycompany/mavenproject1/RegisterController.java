@@ -34,12 +34,10 @@ public class RegisterController {
     
     @FXML
     private TextField txtUsername;
-    @FXML
-    private Button btnRegistro;
+    
     @FXML
     private PasswordField txtPassword;
-    @FXML
-    private Label lblResultado;
+    
     @FXML
     private PasswordField txtPassword2;
 //    @FXML
@@ -69,7 +67,7 @@ public class RegisterController {
         );  
             //UQ EN SQL PARA QUE NO ME DEJE REPETIR NOMBRE_USUARIO
             boolean username_ok=u.checkNombre(txtUsername.getText());
-            boolean password_ok=u.checkPassword(txtUsername.getText());
+            boolean password_ok=u.checkPassword(txtPassword.getText());
             if(txtPassword.getText().equals(txtPassword2.getText())){//misma contraseña en ambos campos
                 coincide=true;
             }else{
@@ -89,7 +87,7 @@ public class RegisterController {
                             Alert_Util_1.mostrarError("Prueba con otro nombre, este usuario ya está registrado.");
                     }
             }else{
-                Alert_Util_1.mostrarError("Las contraseñas no coinciden.");
+                Alert_Util_1.mostrarError("Error.");
             }
     }
     

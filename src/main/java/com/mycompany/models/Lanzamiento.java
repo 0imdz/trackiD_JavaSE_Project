@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
  *
  * @author Ismael
  */
-public class Lanzamiento {
+public abstract class Lanzamiento {
     private int upc;
     private String titulo;
     private String autoria;

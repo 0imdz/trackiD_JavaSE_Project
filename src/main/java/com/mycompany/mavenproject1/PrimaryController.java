@@ -26,29 +26,16 @@ import javafx.scene.control.TextField;
  * @author Ismael
  */
 public class PrimaryController {
-    
-    private ArrayList<Usuario> usuarios;
-
+  
     @FXML
     private TextField txtUsername;
-    
-    @FXML
-    private Label lblResultado;
     
     @FXML
     private TextField txtPassword;
     
     @FXML
-    private Button btnInicio;
-    
-    @FXML
     private void switchToRegistro() throws IOException{
         App.setRoot("register");
-    }
-    
-    @FXML
-    private void switchToOlvido() throws IOException{
-        App.setRoot("olvido");
     }
     
     @FXML

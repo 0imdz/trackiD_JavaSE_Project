@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="ivImagen" fitHeight="204.0" fitWidth="259.0" layoutX="107.0" layoutY="171.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="382.0" prefHeight="59.0" prefWidth="136.0" text="trackiD">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="35.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.8666666666666667" centerY="0.3893129552593668" cycleMethod="REFLECT" radius="0.21962616822429903">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color blue="1.0" green="1.0" red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color blue="0.20000000298023224" green="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="80.0" layoutY="74.0" prefHeight="59.0" prefWidth="335.0" text="Detalles de pista">
+         <font>
+            <Font name="Roboto" size="42.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#00000026" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Separator layoutX="107.0" layoutY="103.0" opacity="0.13" prefHeight="67.0" prefWidth="259.0" />
+      <Button fx:id="btnReproducir" layoutX="344.0" layoutY="434.0" mnemonicParsing="false" onAction="#play" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: grey;" text="I&gt;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Roboto Light" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnReproducir1" layoutX="421.0" layoutY="434.0" mnemonicParsing="false" onAction="#pause" prefHeight="31.0" prefWidth="58.0" style="-fx-background-color: grey;" text="II">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Roboto Light" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnReproducir2" layoutX="828.0" layoutY="455.0" mnemonicParsing="false" onAction="#switchToPanel" prefHeight="31.0" prefWidth="58.0" style="-fx-background-color: grey;" text="Atrás">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Roboto Light" size="15.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.0873786407766991" endY="1.0" startY="0.470873786407767">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
+      <Button fx:id="btnReproducir11" layoutX="483.0" layoutY="434.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: grey;" text="&lt;|">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Roboto Light" size="15.0" />
+         </font>
+      </Button>
+      <Slider fx:id="volumeSlider" layoutX="340.0" layoutY="482.0" max="200.0" opacity="0.34" prefHeight="18.0" prefWidth="220.0" value="100.0" />
+      <Label layoutX="502.0" layoutY="322.0" prefHeight="30.0" prefWidth="164.0" text="Duración" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="501.0" layoutY="354.0" prefHeight="30.0" prefWidth="170.0" text="Fecha de lanzamiento" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="290.0" prefHeight="30.0" prefWidth="196.0" text="Contenido explícito" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="504.0" layoutY="258.0" prefHeight="30.0" prefWidth="216.0" text="Sello" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="226.0" prefHeight="30.0" prefWidth="158.0" text="Género" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="194.0" prefHeight="30.0" prefWidth="192.0" text="Autoría" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="162.0" prefHeight="30.0" prefWidth="194.0" text="Título" textFill="WHITE">
+         <font>
+            <Font name="Roboto Light" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="tittle" layoutX="683.0" layoutY="162.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+      <Label fx:id="author" layoutX="683.0" layoutY="194.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+      <Label fx:id="genre" layoutX="683.0" layoutY="226.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+      <Label fx:id="sello" layoutX="683.0" layoutY="258.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+      <Label fx:id="explicit" layoutX="683.0" layoutY="290.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+      <Label fx:id="duration" layoutX="683.0" layoutY="322.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+      <Label fx:id="lanzamiento" layoutX="683.0" layoutY="354.0" prefHeight="31.0" prefWidth="216.0" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,18 +1,18 @@
 @startuml
 left to right direction
-:Usuario: -->(Creacion de cuenta)
-:Usuario: -->(Inicio de sesion)
-:Usuario: -->(CRUD lanzamiento)
-usecase UC1 as "Creacion de cuenta 
+:Usuario: --(Anyadir cancion)
+:Usuario: --(Ver lista de canciones)
+:BBDD: --(Anyadir cancion)
+:BBDD: --(Actualizar cancion)
+:BBDD: --(Borrar cancion)
+usecase UC1 as "Seleccion de cancion 
 --
-Include: Insercion de nuevo usuario
-usecase UC1 as "Inicio de sesion 
+Include: Borrar cancion
 --
-Include: Insercion de canciones
+Include: Actualizar cancion
 --
-Include: Modificacion de canciones"
+Include: Ver detalles de cancion"
+
 :Usuario: --> (UC1)
-(UC1)<|-(Registro de cuenta):<<extends>>
-(UC1)<|-(Inicio de sesion):<<extends>>
-(UC1)<|-(Insercion de canciones):<<extends>>
+
 @enduml

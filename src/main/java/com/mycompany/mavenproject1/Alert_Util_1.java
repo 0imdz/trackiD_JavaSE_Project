@@ -6,6 +6,7 @@
 package com.mycompany.mavenproject1;
 import java.util.Optional;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
 /**
@@ -31,5 +32,15 @@ public class Alert_Util_1 {
         alert.setTitle("Confirmación");
         alert.setContentText("¿Estas seguro de confirmar la acción?");
         Optional<ButtonType> action = alert.showAndWait();
+    }
+    
+    public static void mostrarConfirmacionEliminacion(String mensaje){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Eliminado");
+        alert.setTitle("Confirmación de eliminación");
+        alert.setContentText("¿Estas seguro de eliminar?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
+                return;
     }
 }

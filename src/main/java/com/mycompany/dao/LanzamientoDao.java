@@ -53,7 +53,7 @@ public class LanzamientoDao {
     }
     
     public void guardarCancion(Cancion c) throws SQLException{
-        String sql = "INSERT INTO trackid.cancion (TITULO, AUTORIA, GENERO, FECHA_LANZAMIENTO, SELLO, C_EXPLICITO, DURACION, USUARIO_ID) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO trackid.cancion (TITULO, AUTORIA, GENERO, FECHA_LANZAMIENTO, SELLO, C_EXPLICITO, DURACION, USUARIO_ID, AUDIO, IMAGEN) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement sentencia = conexion.prepareStatement(sql);
 //        sentencia.setInt( 1, c.getUpc());
@@ -62,9 +62,11 @@ public class LanzamientoDao {
         sentencia.setString(3, c.getGenero());
         sentencia.setDate(4, c.getFecha_lanzamiento());
         sentencia.setString(5, c.getSello());
-        sentencia.setString(6, String.valueOf(c.getC_explicito()));
+        sentencia.setString(6, c.getC_explicito());
         sentencia.setInt(7, c.getDuracion());
         sentencia.setInt(8, c.getUsuario_id());
+        sentencia.setString(9, c.getAudio());
+        sentencia.setString(10, c.getImagen());
         sentencia.executeUpdate();
     }   
     
@@ -92,9 +94,11 @@ public class LanzamientoDao {
             c.setGenero(resultado.getString(4));
             c.setFecha_lanzamiento(resultado.getDate(5));
             c.setSello(resultado.getString(6));
-            c.setC_explicito(resultado.getString(7).charAt(0));
+            c.setC_explicito(resultado.getString(7));
             c.setDuracion(resultado.getInt(8));
             c.setUsuario_id(resultado.getInt(9));
+            c.setAudio(resultado.getString(10));
+            c.setImagen(resultado.getString(11));
             canciones.add(c);
             //(resultado está ejecutando la query de la db)se añade a arraylist canciones el valor de UPC
             //¿de dónde sale el valor dado a variable UPC?: a que resultado(variable que prepara y ejecuta cada query)
@@ -104,7 +108,7 @@ public class LanzamientoDao {
     }
     
     public void modificarCancion(Cancion c) throws SQLException {
-        String sql = "{call spLanzamientoModified (?,?,?,?,?,?,?,?)}";
+        String sql = "{call spLanzamientoModified (?,?,?,?,?,?,?,?,?,?)}";
 
         CallableStatement sentencia = conexion.prepareCall(sql);
         sentencia.setInt(1, c.getUpc());//no permito que se produzca la modificacion del upc
@@ -113,11 +117,21 @@ public class LanzamientoDao {
         sentencia.setString(4, c.getGenero());
         sentencia.setDate(5, c.getFecha_lanzamiento());
         sentencia.setString(6, c.getSello());
-        sentencia.setString(7, String.valueOf(c.getC_explicito()));
+        sentencia.setString(7, c.getC_explicito());
         sentencia.setInt(8, c.getDuracion());
+        sentencia.setString(9, c.getAudio());
+        sentencia.setString(10, c.getImagen());
         sentencia.executeUpdate();
   
         sentencia.execute();
+    }
+    
+    public void deleteCancion(Cancion c) throws SQLException {
+        String sql = "DELETE FROM CANCION WHERE UPC = ?";
+
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, c.getUpc());
+        sentencia.executeUpdate();
     }
 }
 

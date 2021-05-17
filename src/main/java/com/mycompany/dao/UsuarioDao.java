@@ -74,19 +74,6 @@ public class UsuarioDao {
         sentencia.setString(4, u.getRespuesta());
         sentencia.executeUpdate();
     }
-    
-    public void updateContrasenya(Usuario u) throws SQLException{
-        String sql = "{call update_password (?,?,?,?,?)}";
-
-        CallableStatement sentencia = conexion.prepareCall(sql);
-        sentencia.setInt(1, u.getIdusuario());
-        sentencia.setString(2, u.getNombre_usuario());
-        sentencia.setString(3, u.getPassword());
-        sentencia.setString(4, u.getPregunta());
-        sentencia.setString(5, u.getRespuesta());
-  
-        sentencia.execute();
-    }
 }
 
 

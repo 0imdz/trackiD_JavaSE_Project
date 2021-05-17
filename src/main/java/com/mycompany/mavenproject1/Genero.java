@@ -10,5 +10,5 @@ package com.mycompany.mavenproject1;
  * @author Ismael
  */
 public enum Genero {
-    hiphop, rock, heavy, rap, clasica;
+    HipHop, Rock, Metal, Orquesta, RnB, Techno, Jazz, Funk, Soul, Tradicional, Pop;
 }

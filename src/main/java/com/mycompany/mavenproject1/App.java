@@ -1,5 +1,6 @@
 package com.mycompany.mavenproject1;
 
+import com.mycompany.models.Cancion;
 import com.mycompany.models.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ public class App extends Application {
 
     private static Scene scene;
     public static Usuario user=new Usuario(); //este tiene que estar public para ser accesible desde las otras clases
-    
+    public static Cancion cancionSel=new Cancion();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -47,16 +48,17 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
        
         controller.showCanciones();
+//        controller.guardarCancionFromPerfil(cancionSel);
 //        controller.initLists();
 //        controller.prueba();
     }
     
     static void cargarDatos() throws IOException {
-        String fxml = "registrar_cancion";
+        String fxml = "actualizarCancion";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
         // Give the controller access to the main app.
-        NewSongController controller = new NewSongController();
+        ActualizarCancionController controller = new ActualizarCancionController();
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
@@ -67,17 +69,38 @@ public class App extends Application {
     }
     
     static void anyadido() throws IOException {
-        String fxml = "registrar_cancion_1";
+        String fxml = "anyadirCancion";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
         // Give the controller access to the main app.
-        NewSongController1 controller = new NewSongController1();
+        AnyadirCancionController controller = new AnyadirCancionController();
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
        
         controller.showCanciones();
         controller.initLists();
+//        controller.prueba();
+    }
+    
+    static void reproducir(Cancion cancionSel) throws IOException {
+        String fxml = "reproductor";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        ReproductorController controller = new ReproductorController(cancionSel);
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+       
+//        controller.showCanciones();
+
+        controller.inicializar();
+        
+//        controller.play();
+//        controller.pause();
+        
+        controller.cargarCancionReproductor(cancionSel);
 //        controller.prueba();
     }
     

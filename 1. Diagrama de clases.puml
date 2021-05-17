@@ -1,23 +1,146 @@
 @startuml
 
+class ActualizarCancionController{
+    Usuario user
+    Cancion cancionSel
+    LanzamientoDao ldao
+    Genero generos
+    App mainApp
+    TextField txtTitulo
+    TextField txtAutoria
+    ComboBoxcbGenero
+    TextField txtSello
+    DatePicker dpCalendario
+    TextField txtExplicit
+    ListView tblCanciones
+    TextField txtDuracion
+    ComboBox cbCanciones
+    Label lblRuta
+    Label lblRutaImagen
+    updateCancion()
+    switchToPerfil()
+    limpiarCancion()
+    insercionCanciones()
+    showCanciones()
+    cargarCancion()
+    seleccionarCancion()
+    initLists()
+    leerFichero()
+    leerFicheroImagen()
+}
+
+class Alert_Util_1{
+    Alert alerta
+    mostrarError()
+    mostrarInfo()
+    mostrarConfirmacion()
+}
+
+class AnyadirCancionController{
+    Usuario user
+    Cancion cancionSel
+    LanzamientoDao ldao
+    Genero generos
+    TextField txtTitulo
+    TextField txtAutoria
+    ComboBox cbGenero
+    TextField txtSello
+    DatePicker dpCalendario
+    TextField txtExplicit
+    ListView tblCanciones
+    TextField txtDuracion
+    Label lblRuta
+    Label lblRutaImagen
+    switchToPerfil()
+    limpiarCancion()
+    insercionCanciones()
+    showCanciones()
+    initLists()
+    leerFichero()
+    leerFicheroImagen()
+    leerFicheroNormal()
+}
+
 class App{
-    int idusuario
-    Cadena nombre_usuario
-    Cadena password
-    Cadena pregunta_seguridad
-    Cadena respuesta_seguridad
+    Usuario user
+    Cancion cancionSel
+    start()
+    setRoot()
+    verPanel()
+    cargarDatos()
+    anyadido()
+    reproducir()
+    setUsuario()
+    loadFXML()
+    main()
 }
 
-class Usuario{
-    int idusuario
-    Cadena nombre_usuario
-    Cadena password
-    Cadena pregunta_seguridad
-    Cadena respuesta_seguridad
+enum Genero{
+    HipHop
+    Rock
+    Metal 
+    Orquesta 
+    RnB
+    Techno 
+    Jazz 
+    Funk 
+    Soul 
+    Tradicional 
+    Pop
 }
 
-class Lanzamiento{
-    int UPC
+class PanelUsuarioController{
+    Cancion cancionSel
+    ListView tblCancionesPerfil
+    Label lblUsuario
+    switchToAnyadir()
+    switchToAnyadirSong()
+    showCanciones()
+    seleccionarCancionPerfil()
+}
+
+class PrimaryController{
+    Usuario usuarios
+    TextField txtUsername
+    TextField txtPassword
+    switchToRegistro()
+    login()
+}
+
+class RegisterController{
+    TextField txtUsername
+    TextField txtPassword
+    TextField txtPassword2
+    TextField txtPregunta
+    TextFieldtxtRespuesta
+    Registro()
+    switchToInicio()
+}
+
+class ReproductorController{
+    Slider volumeSlider
+    Media media
+    MediaPlayer mediaPlayer
+    Cancion cancionSel
+    Image img
+    Label tittle
+    Label lanzamiento
+    Label sello
+    Label genre
+    Label author
+    Label explicit
+    Label duration  
+    ImageView ivImagen
+    centerImage()
+    inicializar()
+    play()
+    pause()
+    switchToPanel()
+    cargarCancionReproductor()
+}
+
+abstract Lanzamiento{
+    int upc
     Cadena titulo
     Cadena genero
     Date fecha_lanzamiento  
@@ -26,19 +149,68 @@ class Lanzamiento{
 }
 
 class Cancion{
-    char contenido_explicito
+    String contenido_explicito
     int duracion
+    String audio
+    String imagen
+    comprobacion()
 }
 
-enum Genero{
-    hiphop
-    rap
-    heavy
+class Usuario{
+    int idusuario
+    String nombre_usuario
+    String password
+    String pregunta
+    String respuesta
+    checkNombre()
+    checkPassword()
 }
 
+class LanzamientoDao{
+    Connection conexion
+    conectar()
+    desconexion()
+    guardarCancion()
+    listCancion()
+    modificarCancion()
+}
 
-class Lanzamiento *-- class Cancion
-enum Genero *-- class Cancion
+class UsuarioDao{
+    Connection conexion
+    conectar()
+    desconexion()
+    loginUsuario()
+    registroUsuario()
+}
 
+class Lanzamiento <|-- class Cancion
+class Lanzamiento --* Usuario
+class Lanzamiento -- Genero
+
+class Cancion -- ActualizarCancionController
+class Genero -- ActualizarCancionController
+class LanzamientoDao -- ActualizarCancionController
+
+class AnyadirCancionController -- LanzamientoDao
+class AnyadirCancionController -- Cancion
+class AnyadirCancionController -- LanzamientoDao
+
+class Cancion --* App
+class Usuario --* App
+class PanelUsuarioController --* App
+class ActualizarCancionController --* App
+class AnyadirCancionController --* App
+class ReproductorController --* App
+
+class Cancion -- PanelUsuarioController
+class LanzamientoDao -- PanelUsuarioController
+
+class Usuario -- PrimaryController
+class UsuarioDao -- PrimaryController
+
+class UsuarioDao -- RegisterController
+class Usuario -- RegisterController
+
+class Cancion -- ReproductorController
 
 @enduml

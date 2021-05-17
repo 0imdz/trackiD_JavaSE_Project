@@ -30,7 +30,7 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <ListView fx:id="tblCancionesPerfil" layoutX="57.0" layoutY="132.0" prefHeight="282.0" prefWidth="777.0" style="-fx-background-color: grey;" />
+      <ListView fx:id="tblCancionesPerfil" layoutX="57.0" layoutY="132.0" onMouseClicked="#seleccionarCancionPerfil" prefHeight="282.0" prefWidth="777.0" style="-fx-background-color: grey;" />
       <Button fx:id="btnModificarCancion" layoutX="584.0" layoutY="421.0" mnemonicParsing="false" onAction="#switchToAnyadir" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: grey;" text="=| Editar biblioteca">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -39,23 +39,17 @@
             <Font name="Roboto Light" size="15.0" />
          </font>
       </Button>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="733.0" layoutY="43.0" prefHeight="52.0" prefWidth="100.0" style="-fx-text-alignment: right;" text="Label" textAlignment="RIGHT" textFill="WHITE">
+      <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="619.0" layoutY="90.0" prefHeight="52.0" prefWidth="214.0" style="-fx-text-alignment: right;" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="619.0" layoutY="85.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="180.0" promptText="Buscar canción" />
-      <Button fx:id="btnAjustes1" layoutX="804.0" layoutY="85.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: grey;" text="B">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
       <Label layoutX="56.0" layoutY="66.0" prefHeight="59.0" prefWidth="198.0" text="Biblioteca">
          <font>
             <Font name="Roboto" size="42.0" />
          </font>
          <textFill>
-            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.5922330097087378">
+            <LinearGradient cycleMethod="REFLECT" endX="0.14077669902912626" endY="0.9951456310679612" startX="0.42718446601941745">
                <stops>
                   <Stop color="WHITE" />
                   <Stop color="#00000026" offset="1.0" />
