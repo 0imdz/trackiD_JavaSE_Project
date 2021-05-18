@@ -86,9 +86,7 @@ public class Cancion extends Lanzamiento{
                 salir=true;
             }
         }
-        else{
-            Alert_Util_1.mostrarError("Asegúrate de que la longitud del fichero es correcta.");
-        }
+        
         return salir;
     }
 }

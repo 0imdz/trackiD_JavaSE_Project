@@ -72,9 +72,9 @@
          </textFill>
       </Label>
       <Separator layoutX="336.0" layoutY="150.0" opacity="0.38" prefHeight="67.0" prefWidth="215.0" />
-      <Button fx:id="btnRegistro" layoutX="235.0" layoutY="373.0" mnemonicParsing="false" onAction="#switchToRegistro" prefHeight="31.0" prefWidth="442.0" style="-fx-background-color: none;" text="¿No tienes una cuenta? Regístrate" textFill="WHITE">
+      <Button fx:id="btnRegistro" layoutX="235.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToRegistro" prefHeight="31.0" prefWidth="442.0" style="-fx-background-color: none;" text="¿No tienes una cuenta? Regístrate" textFill="WHITE">
          <font>
-            <Font name="Roboto" size="12.0" />
+            <Font name="Roboto Light" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

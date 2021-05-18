@@ -32,6 +32,8 @@ public class Alert_Util_1 {
         alert.setTitle("Confirmación");
         alert.setContentText("¿Estas seguro de confirmar la acción?");
         Optional<ButtonType> action = alert.showAndWait();
+        if (action.get().getButtonData() == ButtonBar.ButtonData.APPLY)
+                return;
     }
     
     public static void mostrarConfirmacionEliminacion(String mensaje){

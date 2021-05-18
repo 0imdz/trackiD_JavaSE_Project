@@ -16,7 +16,7 @@
       <TextField fx:id="txtRespuesta" layoutX="457.0" layoutY="358.0" prefHeight="31.0" prefWidth="242.0" promptText="Introduce una respuesta" />
       <Button fx:id="btnRegistro" layoutX="225.0" layoutY="438.0" mnemonicParsing="false" onAction="#Registro" prefHeight="26.0" prefWidth="476.0" style="-fx-background-color: #cdcdcd;" text="Registrar">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="Roboto Light" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -95,7 +95,7 @@
             <Font name="Roboto Light" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="227.0" layoutY="361.0" prefHeight="30.0" prefWidth="151.0" text="Respuesta" textFill="WHITE">
+      <Label layoutX="227.0" layoutY="361.0" prefHeight="30.0" prefWidth="151.0" text="Respuesta de seguridad" textFill="WHITE">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>

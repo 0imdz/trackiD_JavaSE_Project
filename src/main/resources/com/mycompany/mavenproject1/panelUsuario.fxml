@@ -49,7 +49,7 @@
             <Font name="Roboto" size="42.0" />
          </font>
          <textFill>
-            <LinearGradient cycleMethod="REFLECT" endX="0.14077669902912626" endY="0.9951456310679612" startX="0.42718446601941745">
+            <LinearGradient cycleMethod="REFLECT" endX="0.17961165048543692" endY="1.0" startX="0.18932038834951453">
                <stops>
                   <Stop color="WHITE" />
                   <Stop color="#00000026" offset="1.0" />

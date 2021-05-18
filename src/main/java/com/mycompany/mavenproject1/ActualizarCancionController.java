@@ -101,6 +101,12 @@ public class ActualizarCancionController {
 //        cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
         
         try {
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmacion.setTitle("Modificar canción");
+            confirmacion.setContentText("¿Estás seguro de modificar esta canción?");
+            Optional<ButtonType> respuesta = confirmacion.showAndWait();
+            if (respuesta.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
+                return;
             ldao.conectar();
             ldao.modificarCancion(cancion);
             Alert_Util_1.mostrarConfirmacion("Confirmame");
@@ -244,13 +250,13 @@ public class ActualizarCancionController {
         LanzamientoDao ldao = new LanzamientoDao();
         cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
         if (cancionSel == null) {
-            Alert_Util_1.mostrarError("No se ha seleccionado ninguna ruta");
+            Alert_Util_1.mostrarError("Debes seleccionar una canción.");
             return;
         }
         try {
             Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmacion.setTitle("Eliminar Ruta");
-            confirmacion.setContentText("¿Estás seguro de querer eliminar esta ruta?");
+            confirmacion.setTitle("Eliminar canción");
+            confirmacion.setContentText("¿Estás seguro de eliminar esta canción?");
             Optional<ButtonType> respuesta = confirmacion.showAndWait();
             if (respuesta.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
                 return;
@@ -258,7 +264,7 @@ public class ActualizarCancionController {
             ldao.deleteCancion(cancionSel);
             initLists();
         } catch (SQLException ex) {
-            Alert_Util_1.mostrarError("Error al eliminar la ruta seleccionada. " + ex.getMessage());
+            Alert_Util_1.mostrarError("Error al eliminar la canción seleccionada. " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ActualizarCancionController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

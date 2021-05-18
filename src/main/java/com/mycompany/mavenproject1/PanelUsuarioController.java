@@ -45,6 +45,11 @@ public class PanelUsuarioController {
         App.anyadido();
     }
     
+//    @FXML
+//    private void logout() throws IOException{
+//        App.user.();
+//    }
+    
     @FXML
     private Label lblUsuario;
     

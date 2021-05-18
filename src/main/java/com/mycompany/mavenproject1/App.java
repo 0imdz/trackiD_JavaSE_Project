@@ -27,6 +27,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         
+        
         //Controlador accede a App
 //        PrimaryController controller = fxmlLoader.getController();
 ////        scene.setRoot(fxmlLoader.load());
@@ -48,6 +49,7 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
        
         controller.showCanciones();
+        
 //        controller.guardarCancionFromPerfil(cancionSel);
 //        controller.initLists();
 //        controller.prueba();

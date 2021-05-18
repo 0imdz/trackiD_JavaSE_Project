@@ -139,7 +139,7 @@ class ReproductorController{
     cargarCancionReproductor()
 }
 
-abstract Lanzamiento{
+class Lanzamiento{
     int upc
     Cadena titulo
     Cadena genero
@@ -193,7 +193,7 @@ class LanzamientoDao -- ActualizarCancionController
 
 class AnyadirCancionController -- LanzamientoDao
 class AnyadirCancionController -- Cancion
-class AnyadirCancionController -- LanzamientoDao
+
 
 class Cancion --* App
 class Usuario --* App

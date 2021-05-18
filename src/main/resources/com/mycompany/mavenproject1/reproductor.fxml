@@ -46,7 +46,7 @@
          </textFill>
       </Label>
       <Separator layoutX="107.0" layoutY="103.0" opacity="0.13" prefHeight="67.0" prefWidth="259.0" />
-      <Button fx:id="btnReproducir" layoutX="344.0" layoutY="434.0" mnemonicParsing="false" onAction="#play" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: grey;" text="I&gt;">
+      <Button fx:id="btnReproducir" layoutX="346.0" layoutY="434.0" mnemonicParsing="false" onAction="#play" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: grey;" text="I&gt;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -54,7 +54,7 @@
             <Font name="Roboto Light" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnReproducir1" layoutX="421.0" layoutY="434.0" mnemonicParsing="false" onAction="#pause" prefHeight="31.0" prefWidth="58.0" style="-fx-background-color: grey;" text="II">
+      <Button fx:id="btnReproducir1" layoutX="451.0" layoutY="434.0" mnemonicParsing="false" onAction="#pause" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: grey;" text="II">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -77,14 +77,6 @@
                </stops>
             </LinearGradient>
          </textFill>
-      </Button>
-      <Button fx:id="btnReproducir11" layoutX="483.0" layoutY="434.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: grey;" text="&lt;|">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Roboto Light" size="15.0" />
-         </font>
       </Button>
       <Slider fx:id="volumeSlider" layoutX="340.0" layoutY="482.0" max="200.0" opacity="0.34" prefHeight="18.0" prefWidth="220.0" value="100.0" />
       <Label layoutX="502.0" layoutY="322.0" prefHeight="30.0" prefWidth="164.0" text="Duración" textFill="WHITE">

@@ -94,9 +94,7 @@ public abstract class Lanzamiento {
     @Override
     public String toString() {
         return 
-               "TÍTULO: " + titulo + 
-               "   ||   AUTORÍA: " + autoria + 
-               "   ||   GÉNERO: " + genero;
+               titulo + " - "+autoria;
 //               " | FECHA DE LANZAMIENTO: " + fecha_lanzamiento + 
 //               " | NÚMERO DE PISTAS: " + n_pistas + 
 //               " | SELLO: " + sello + 

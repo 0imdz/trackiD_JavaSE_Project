@@ -1,0 +1,20 @@
+@startuml
+participant Usuario
+participant Plataforma 
+database BD
+
+
+Usuario -> Plataforma : Solicitud de inicio de sesion
+Plataforma -> BD : Inicio de sesion
+alt caso de exito
+BD --> Plataforma : Inicio de sesion confirmado
+Plataforma --> Usuario : Confirmacion de inicio de sesion
+else algun problema o fallo
+BD --> Plataforma : Inicio de sesion no realizado
+Plataforma --> Usuario : Inicio de sesion no completado
+end
+
+
+
+    
+@enduml
