@@ -4,8 +4,8 @@
 diferentes plataformas digitales, ya que para subir contenido a éstas, es necesaria una 
 plataforma intermediaria.*
 
-![inicio_sesion](images/inicio_sesion.jpg)
-![registro](images/registro.jpg)
-![panel_usuario](images/panel_usuario.jpg)
-![nuevo_lanzamiento](images/nuevo_lanzamiento.jpg)
-![nuevo_lanzamiento_2](images/nuevo_lanzamiento_2.jpg)
+![inicio_sesion](images/1.png)
+![registro](images/2.png)
+![panel_usuario](images/3.png)
+![nuevo_lanzamiento](images/4.png)
+![nuevo_lanzamiento_2](images/5.png)
