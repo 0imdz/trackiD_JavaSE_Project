@@ -11,14 +11,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * JavaFX App | clase principal. 
  */
 public class App extends Application {
 
     private static Scene scene;
-    public static Usuario user=new Usuario(); //este tiene que estar public para ser accesible desde las otras clases
+
+    /**
+     * Clase Usuario accesible desde todas las clases (objeto user)
+     */
+    public static Usuario user=new Usuario(); 
+
+    /**
+     * Clase Cancion accesible desde todas las clases (objeto cancionSel)
+     */
     public static Cancion cancionSel=new Cancion();
 
+    /**
+     * Primera pantalla. Ventana de inicio de sesión.
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         String fxml = "primary";
@@ -26,12 +39,6 @@ public class App extends Application {
         scene = new Scene(fxmlLoader.load(), 900, 550);
         stage.setScene(scene);
         stage.show();
-        
-        
-        //Controlador accede a App
-//        PrimaryController controller = fxmlLoader.getController();
-////        scene.setRoot(fxmlLoader.load());
-//        controller.loadUsers();
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -42,24 +49,18 @@ public class App extends Application {
         String fxml = "panelUsuario";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
-        // Give the controller access to the main app.
         PanelUsuarioController controller = new PanelUsuarioController();
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
        
         controller.showCanciones();
-        
-//        controller.guardarCancionFromPerfil(cancionSel);
-//        controller.initLists();
-//        controller.prueba();
     }
     
     static void cargarDatos() throws IOException {
         String fxml = "actualizarCancion";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
-        // Give the controller access to the main app.
         ActualizarCancionController controller = new ActualizarCancionController();
         fxmlLoader.setController(controller);
         
@@ -67,14 +68,12 @@ public class App extends Application {
        
         controller.showCanciones();
         controller.initLists();
-//        controller.prueba();
     }
     
     static void anyadido() throws IOException {
         String fxml = "anyadirCancion";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
-        // Give the controller access to the main app.
         AnyadirCancionController controller = new AnyadirCancionController();
         fxmlLoader.setController(controller);
         
@@ -82,43 +81,21 @@ public class App extends Application {
        
         controller.showCanciones();
         controller.initLists();
-//        controller.prueba();
     }
     
     static void reproducir(Cancion cancionSel) throws IOException {
         String fxml = "reproductor";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
-        // Give the controller access to the main app.
         ReproductorController controller = new ReproductorController(cancionSel);
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
-       
-//        controller.showCanciones();
 
         controller.inicializar();
         
-//        controller.play();
-//        controller.pause();
-        
         controller.cargarCancionReproductor(cancionSel);
-//        controller.prueba();
     }
-    
-//    static void registrarUsuario() throws IOException {
-//        String fxml = "register";
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-//
-//        // Give the controller access to the main app.
-//        RegisterController controller = new RegisterController();
-//        fxmlLoader.setController(controller);
-//        controller.initPreguntas();
-////        scene.setRoot(fxmlLoader.load());
-//       
-//        
-//        
-//    }
     
     static void setUsuario(Usuario u) {       
         user = u;
@@ -129,6 +106,10 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }

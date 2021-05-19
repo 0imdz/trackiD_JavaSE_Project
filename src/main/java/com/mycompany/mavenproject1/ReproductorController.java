@@ -59,11 +59,18 @@ public class ReproductorController {
     @FXML
     private ImageView ivImagen;
     
-    public ReproductorController(Cancion cancionSel){ //sin esto no funcionaría cancionSel
+    /**
+     * Constructor parámetros canción seleccionada
+     * @param cancionSel
+     */
+    public ReproductorController(Cancion cancionSel){ 
         this.cancionSel=cancionSel;
     }
     
-     public void centerImage() {
+    /**
+     * Método que centra imagen en el imageView
+     */
+    public void centerImage() {
         img = ivImagen.getImage();
         if (img != null) {
             double w = 0;
@@ -84,14 +91,14 @@ public class ReproductorController {
 
             ivImagen.setX((ivImagen.getFitWidth() - w) / 2);
             ivImagen.setY((ivImagen.getFitHeight() - h) / 2);
-
         }
     }
     
+    /**
+     * Método que inicializa la clase ReproductorController
+     */
     public void inicializar(){
-        
             cargarCancionReproductor(cancionSel);
-            //cambiar cancion mp3 por el dato cancionSel.getAudio (devolviendo un .mp3 de audio)
             File f=new File(System.getProperty("user.dir") + "/music/" +cancionSel.getAudio()); 
             media = new Media(f.toURI().toString());
             mediaPlayer=new MediaPlayer(media);
@@ -112,13 +119,17 @@ public class ReproductorController {
         }  
     }
     
-   
-    
+    /**
+     * Reproducir pista
+     */
     @FXML
     public void play(){
         mediaPlayer.play();
     }
     
+    /**
+     * Pausar pista
+     */
     @FXML
     public void pause(){
         mediaPlayer.pause();
@@ -129,8 +140,11 @@ public class ReproductorController {
         App.verPanel();
     }
     
+    /**
+     * Cargar atributos de la canción seleccionada con los campos rellenos al reproductor
+     * @param cancionSel
+     */
     public void cargarCancionReproductor(Cancion cancionSel) {
-//        txtUPC.setText(String.valueOf(c.getUpc()));
         tittle.setText(cancionSel.getTitulo());
         author.setText(cancionSel.getAutoria());
         genre.setText(cancionSel.getGenero());
@@ -138,6 +152,5 @@ public class ReproductorController {
         sello.setText(cancionSel.getSello());
         explicit.setText(cancionSel.getC_explicito());
         duration.setText(String.valueOf(cancionSel.getDuracion())+" minutos");
-////        txtRuta.setText(c.getAudio());
     }
 }

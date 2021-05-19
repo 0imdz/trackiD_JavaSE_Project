@@ -14,18 +14,31 @@ import javafx.scene.control.ButtonType;
  * @author Ismael
  */
 public class Alert_Util_1 {
+
+    /**
+     * Mostrar mensaje de error
+     * @param mensaje
+     */
     public static void mostrarError(String mensaje){
         Alert alerta=new Alert(Alert.AlertType.ERROR);
         alerta.setContentText(mensaje);
         alerta.show();
     }
     
+    /**
+     * Mostrar mensaje de información
+     * @param mensaje
+     */
     public static void mostrarInfo(String mensaje){
         Alert alerta=new Alert(Alert.AlertType.INFORMATION);
         alerta.setContentText(mensaje);
         alerta.show();
     }
     
+    /**
+     * Mostrar mensaje de confirmación de cambios
+     * @param mensaje
+     */
     public static void mostrarConfirmacion(String mensaje){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Confirmar cambios");
@@ -33,16 +46,6 @@ public class Alert_Util_1 {
         alert.setContentText("¿Estas seguro de confirmar la acción?");
         Optional<ButtonType> action = alert.showAndWait();
         if (action.get().getButtonData() == ButtonBar.ButtonData.APPLY)
-                return;
-    }
-    
-    public static void mostrarConfirmacionEliminacion(String mensaje){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Eliminado");
-        alert.setTitle("Confirmación de eliminación");
-        alert.setContentText("¿Estas seguro de eliminar?");
-        Optional<ButtonType> action = alert.showAndWait();
-        if (action.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
                 return;
     }
 }

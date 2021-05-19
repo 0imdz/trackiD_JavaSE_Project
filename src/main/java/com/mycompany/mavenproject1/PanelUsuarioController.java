@@ -25,7 +25,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 /**
- *
+ * Clase controller de la ventana fxml paneUsuario
  * @author Ismael
  */
 public class PanelUsuarioController {
@@ -45,11 +45,6 @@ public class PanelUsuarioController {
         App.anyadido();
     }
     
-//    @FXML
-//    private void logout() throws IOException{
-//        App.user.();
-//    }
-    
     @FXML
     private Label lblUsuario;
     
@@ -62,13 +57,18 @@ public class PanelUsuarioController {
             Alert_Util_1.mostrarError("Error al cargar la ventana.");
         }
     }
-        
+         
+    /**
+     * Método que muestra las canciones contenidas en la base de datos Canciones. 
+     * Para poder manejarlas usaremos un arraylist en la aplicación Java
+     * @throws IOException
+     */
     public void showCanciones() throws IOException{//no es @FXML, pq está inicilizado
         LanzamientoDao ldao = new LanzamientoDao();
         List<Cancion> canciones=new ArrayList<Cancion>();
         try {
-            ldao.conectar();//meter try-catch
-            canciones=ldao.listCancion(App.user.getIdusuario()); //llamada a getIdusuario
+            ldao.conectar();
+            canciones=ldao.listCancion(App.user.getIdusuario());
             tblCancionesPerfil.setItems(FXCollections.observableList(canciones));
             lblUsuario.setText("@ "+App.user.getNombre_usuario());
         } catch (ClassNotFoundException ex) {

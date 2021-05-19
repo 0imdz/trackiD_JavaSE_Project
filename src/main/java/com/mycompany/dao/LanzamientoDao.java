@@ -7,7 +7,6 @@ package com.mycompany.dao;
 
 import com.mycompany.mavenproject1.App;
 import com.mycompany.models.Cancion;
-import com.mycompany.models.Lanzamiento;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,20 +21,21 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- *
+ * Clase para realizar conexión a base de datos
  * @author Ismael
  */
 public class LanzamientoDao {
     private Connection conexion;
   
+    /**
+     * Establecimiento de parámetros necesarios para que se efectúe la conexión con la base de datos
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws IOException
+     */
     public void conectar() throws ClassNotFoundException, SQLException, IOException{
-//        String host="localhost";
-//        String port="3306";
-//        String dbname="trackid";
-//        String username="root";
-//        String password="DBISMAELMARIA99";
         
-        Properties configuration = new Properties();//objeti clase Properties
+        Properties configuration = new Properties();
         configuration.load(new FileInputStream(new File(App.class.getResource("connectionDB.properties").getPath())));
         String host = configuration.getProperty("host");
         String port = configuration.getProperty("port");
@@ -43,20 +43,28 @@ public class LanzamientoDao {
         String username = configuration.getProperty("username");
         String password = configuration.getProperty("password");
         
-        //El connection String quedaría así=jdbc:mariadb://localhost:3306/blockbuster/?serverTimeZone=UTC
         conexion=DriverManager.getConnection("jdbc:mariadb://"+host+":"+port+"/"+dbname
                                              +"?serverTimezone=UTC", username, password);
     }
     
+    /**
+     * Cierre de conexión con la base de datos
+     * @throws SQLException
+     */
     public void desconexion () throws SQLException{
         conexion.close();
     }
     
+    /**
+     * Método que guarda las canciones insertadas en la aplicación en la base de datos
+     * @param c
+     * @throws SQLException
+     */
     public void guardarCancion(Cancion c) throws SQLException{
         String sql = "INSERT INTO trackid.cancion (TITULO, AUTORIA, GENERO, FECHA_LANZAMIENTO, SELLO, C_EXPLICITO, DURACION, USUARIO_ID, AUDIO, IMAGEN) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-//        sentencia.setInt( 1, c.getUpc());
+        
         sentencia.setString(1, c.getTitulo());
         sentencia.setString(2, c.getAutoria());
         sentencia.setString(3, c.getGenero());
@@ -70,19 +78,20 @@ public class LanzamientoDao {
         sentencia.executeUpdate();
     }   
     
-    public List<Cancion> listCancion(int usuario_id) throws SQLException { //no declaro int idusuario
-                                                               //pq lo paso en App.user.getIdusuario()
+    /**
+     * Método que muestra todos los elementos de la tabla canciones de la base de datos en pantalla
+     * @param usuario_id
+     * @return
+     * @throws SQLException
+     */
+    public List<Cancion> listCancion(int usuario_id) throws SQLException {
         
     List<Cancion> canciones = new ArrayList<>();
-    String sql = "SELECT * FROM cancion WHERE USUARIO_ID=?"; //interrogante pq se le pasa abajo el id de usuario
-                                                                                         //el getIdusuario trae el id de usuario que busca la consulta 
+    String sql = "SELECT * FROM cancion WHERE USUARIO_ID=?"; 
 
     PreparedStatement sentencia = conexion.prepareStatement(sql);
     
-    sentencia.setInt(1, usuario_id); //le paso atributo de tipo int pq usuario_id es de tipo int
-                                     //el uno es por la posicion del idusuario en clase usuario, es lo importante
-                                     //set tipo de variable que quiero
-                                     //este sería el valor del interrogante
+    sentencia.setInt(1, usuario_id);
     
     ResultSet resultado = sentencia.executeQuery();
 
@@ -100,18 +109,21 @@ public class LanzamientoDao {
             c.setAudio(resultado.getString(10));
             c.setImagen(resultado.getString(11));
             canciones.add(c);
-            //(resultado está ejecutando la query de la db)se añade a arraylist canciones el valor de UPC
-            //¿de dónde sale el valor dado a variable UPC?: a que resultado(variable que prepara y ejecuta cada query)
-            //pide lo contenido en la posición dada (posición en la base de datos(>1)
         }
         return canciones;
     }
     
+    /**
+     * Método que llama a un proceso almacenado en la base de datos:
+     *  modifica los parámetros del objeto
+     * @param c
+     * @throws SQLException
+     */
     public void modificarCancion(Cancion c) throws SQLException {
         String sql = "{call spLanzamientoModified (?,?,?,?,?,?,?,?,?,?)}";
 
         CallableStatement sentencia = conexion.prepareCall(sql);
-        sentencia.setInt(1, c.getUpc());//no permito que se produzca la modificacion del upc
+        sentencia.setInt(1, c.getUpc());
         sentencia.setString(2, c.getTitulo());
         sentencia.setString(3, c.getAutoria());
         sentencia.setString(4, c.getGenero());
@@ -126,6 +138,11 @@ public class LanzamientoDao {
         sentencia.execute();
     }
     
+    /**
+     * Método que borra una canción determinada de la base de datos
+     * @param c
+     * @throws SQLException
+     */
     public void deleteCancion(Cancion c) throws SQLException {
         String sql = "DELETE FROM CANCION WHERE UPC = ?";
 

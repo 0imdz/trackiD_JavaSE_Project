@@ -18,6 +18,20 @@ public class Cancion extends Lanzamiento{
     private String audio;
     private String imagen;
     
+    /**
+     *
+     * @param upc
+     * @param titulo
+     * @param autoria
+     * @param genero
+     * @param fecha_lanzamiento
+     * @param sello
+     * @param usuario_id
+     * @param c_explicito
+     * @param duracion
+     * @param audio
+     * @param imagen
+     */
     public Cancion (int upc, String titulo, String autoria, String genero, Date fecha_lanzamiento, String sello, int usuario_id, String c_explicito, int duracion, String audio, String imagen){
         super(upc, titulo, autoria, genero, fecha_lanzamiento, sello, usuario_id); //heredo de lanzamiento
         this.c_explicito=c_explicito;
@@ -26,6 +40,10 @@ public class Cancion extends Lanzamiento{
         this.imagen=imagen;
     }
     
+    /**
+     *
+     * @param importeCanciones
+     */
     public Cancion(String[] importeCanciones){
         super(Integer.parseInt(importeCanciones[0]),importeCanciones[1],importeCanciones[2],importeCanciones[3],Date.valueOf(importeCanciones[4]),importeCanciones[5],Integer.parseInt(importeCanciones[6]));
         this.c_explicito = importeCanciones[7];
@@ -34,44 +52,82 @@ public class Cancion extends Lanzamiento{
         this.imagen=importeCanciones[10];
     }
     
+    /**
+     *
+     */
     public Cancion(){
         
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDuracion() {
         return duracion;
     }
 
+    /**
+     *
+     * @param duracion
+     */
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getC_explicito() {
         return c_explicito;
     }
 
+    /**
+     *
+     * @param c_explicito
+     */
     public void setC_explicito(String c_explicito) {
         this.c_explicito = c_explicito;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAudio() {
         return audio;
     }
 
+    /**
+     *
+     * @param audio
+     */
     public void setAudio(String audio) {
         this.audio = audio;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     *
+     * @param imagen
+     */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
     
-    
-    
+    /**
+     *
+     * @param canciones_1
+     * @return
+     */
     public static boolean comprobacion(String[] canciones_1){
         boolean salir=false;
         int cont=0;
@@ -86,7 +142,6 @@ public class Cancion extends Lanzamiento{
                 salir=true;
             }
         }
-        
         return salir;
     }
 }

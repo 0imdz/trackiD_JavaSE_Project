@@ -47,7 +47,7 @@ import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
- *
+ * Clase controller del proceso de actualización de los parámetros de la canción
  * @author Ismael
  */
 public class ActualizarCancionController {
@@ -91,14 +91,13 @@ public class ActualizarCancionController {
                 cbGenero.getValue().toString(), 
                 Date.valueOf(dpCalendario.getValue()), 
                 txtSello.getText(),
-                App.user.getIdusuario(), //idusuario que esté con la sesión iniciada
+                App.user.getIdusuario(),
                 txtExplicit.getText(), 
                 Integer.parseInt(txtDuracion.getText()),
                 lblRuta.getText(),
                 lblRutaimagen.getText());
         
         LanzamientoDao ldao = new LanzamientoDao();
-//        cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
         
         try {
             Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
@@ -109,7 +108,6 @@ public class ActualizarCancionController {
                 return;
             ldao.conectar();
             ldao.modificarCancion(cancion);
-            Alert_Util_1.mostrarConfirmacion("Confirmame");
             showCanciones();
         }catch (IOException ex) {
             Alert_Util_1.mostrarError("2" +ex.getMessage());
@@ -127,12 +125,11 @@ public class ActualizarCancionController {
     
     @FXML
     private void limpiarCancion() {
-//        txtUPC.setText("");
         cbCanciones.setValue("");
         txtTitulo.setText("");
         txtAutoria.setText("");
         cbGenero.setValue("");
-        dpCalendario.setValue(java.time.LocalDate.now()); //se pone a fecha de hoy
+        dpCalendario.setValue(java.time.LocalDate.now());
         txtSello.setText("");
         txtExplicit.setText("");
         txtDuracion.setText("");
@@ -150,16 +147,16 @@ public class ActualizarCancionController {
                 cbGenero.getValue().toString(), 
                 Date.valueOf(dpCalendario.getValue()), 
                 txtSello.getText(),
-                App.user.getIdusuario(), //idusuario que esté con la sesión iniciada
+                App.user.getIdusuario(),
                 txtExplicit.getText(), 
                 Integer.parseInt(txtDuracion.getText()),
                 lblRuta.getText(),
                 lblRutaimagen.getText()
         );
         try {
-            ldao.conectar();//conexión a base de datos
-            ldao.guardarCancion(c); //para guardar uso de guardarCancion de CancionDao. todo lo guardo en objeto c.
-            showCanciones();//refresco: vuelve a ejecutar la función que muestra todas las canciones de un usuario
+            ldao.conectar();
+            ldao.guardarCancion(c); 
+            showCanciones();
             
         } catch (ClassNotFoundException ex) {
             Alert_Util_1.mostrarError(ex.getMessage());
@@ -168,12 +165,17 @@ public class ActualizarCancionController {
         }
     }
     
-    public void showCanciones() throws IOException{//no es @FXML, pq está inicilizado
+    /**
+     * Método que muestra las canciones contenidas en la base de datos Canciones. 
+     * Para poder manejarlas usaremos un arraylist en la aplicación Java
+     * @throws IOException
+     */
+    public void showCanciones() throws IOException{
         LanzamientoDao ldao = new LanzamientoDao();
         List<Cancion> canciones=new ArrayList<Cancion>();
         try {
-            ldao.conectar();//meter try-catch
-            canciones=ldao.listCancion(App.user.getIdusuario()); //llamada a getIdusuario
+            ldao.conectar();
+            canciones=ldao.listCancion(App.user.getIdusuario()); 
             cbCanciones.setItems(FXCollections.observableList(canciones));
             tblCanciones.setItems(FXCollections.observableList(canciones));
             
@@ -185,7 +187,6 @@ public class ActualizarCancionController {
     }
     
     private void cargarCancion(Cancion c) {
-//        txtUPC.setText(String.valueOf(c.getUpc()));
         txtTitulo.setText(c.getTitulo());
         txtAutoria.setText(c.getAutoria());
         cbGenero.setValue(c.getGenero());
@@ -197,24 +198,36 @@ public class ActualizarCancionController {
         lblRutaimagen.setText(c.getImagen());
     }
     
+    /**
+     * Cargaremos el evento de selección de un elemento del comboBox de canciones 
+     * a una variable (cancionSel). Invocaremos al método cargarCancion (asignación 
+     * de valores a parámetros) para que se muestren los atributos de la canción
+     * deseada, en este caso, la que ha sido seleccionada del comboBox (cancionSel)
+     * @param event
+     */
     @FXML
     public void seleccionarCancion(Event event) {
         cancionSel = (Cancion)cbCanciones.getSelectionModel().getSelectedItem();
         cargarCancion(cancionSel);
     }
 
+    /**
+     * Se carga el comboBox cbGenero con los diferentes géneros que trackiD permite.
+     * Estos aparecen almacenados en una clase enum (Género), la cual aparecerá como
+     * clase de un ObservableList de nombre generos.
+     */
     public void initLists(){
         cbGenero.setItems(generos);
     }
-    
-    //AUDIO
+
+    /**
+     * LECTURA DE FICHERO DE AUDIO (.MP3, .WAV)
+     */
     public void leerFichero(){
         
         FileChooser dialogoFichero = new FileChooser();
         dialogoFichero.setTitle("Selecciona un fichero");
         File fAbrir = dialogoFichero.showOpenDialog(null);
-//        dialogoFichero.setText(f.getAbsolutePath());
-//        File fGuardar = dialogoFichero.showSaveDialog(null);
 
         if (fAbrir != null) {
             lblRuta.setText(fAbrir.getName());
@@ -226,8 +239,10 @@ public class ActualizarCancionController {
             }
         }  
     }
-    
-    //IMAGEN
+
+    /**
+     * LECTURA DE FICHERO DE IMAGEN (.PNG, .JPG, .GIF)
+     */
     public void leerFicheroImagen(){
        
         FileChooser dialogoFichero1 = new FileChooser();
@@ -238,7 +253,7 @@ public class ActualizarCancionController {
             lblRutaimagen.setText(fAbrir1.getName());
             try {
                 Files.copy(fAbrir1.toPath(), (new File(System.getProperty("user.dir")+"/images/" + fAbrir1.getName())).toPath(),
-                        StandardCopyOption.REPLACE_EXISTING); //copia
+                        StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ex) {
                 Logger.getLogger(AnyadirCancionController.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -26,7 +26,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
+ * FXML Controller class | Controller ventana registro
  *
  * @author Ismael
  */
@@ -40,9 +40,6 @@ public class RegisterController {
     
     @FXML
     private PasswordField txtPassword2;
-//    @FXML
-//    ComboBox cbPregunta;
-//    ObservableList<String> preguntaslist=FXCollections.observableArrayList("Hola");
     
     @FXML
     private TextField txtPregunta;
@@ -65,10 +62,9 @@ public class RegisterController {
                 txtPregunta.getText(),
                 txtRespuesta.getText()
         );  
-            //UQ EN SQL PARA QUE NO ME DEJE REPETIR NOMBRE_USUARIO
             boolean username_ok=u.checkNombre(txtUsername.getText());
             boolean password_ok=u.checkPassword(txtPassword.getText());
-            if(txtPassword.getText().equals(txtPassword2.getText())){//misma contraseña en ambos campos
+            if(txtPassword.getText().equals(txtPassword2.getText())){
                 coincide=true;
             }else{
                 Alert_Util_1.mostrarError("Las contraseñas no coinciden.");
@@ -95,13 +91,4 @@ public class RegisterController {
     private void switchToInicio() throws IOException{
         App.setRoot("primary");
     }
-
-//    public ObservableList getPreguntaslist() {
-//        return preguntaslist;
-//    }
-    
-//    public void initialize(URL location, ResourceBundle resources){
-//        cbPregunta.setItems(preguntaslist);
-//    }
-    
 }

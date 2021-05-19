@@ -21,7 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
+ * FXML Controller class | Controller de ventana de inicio de sesión
  *
  * @author Ismael
  */
@@ -45,11 +45,9 @@ public class PrimaryController {
         List<Usuario> usuarios=new ArrayList<Usuario>();
         boolean salir=false;
         
-        //Usuario u = new Usuario(-1, txtUsername.getText(), txtPassword.getText());
-        
         try{
             udao.conectar();
-            usuarios=udao.loginUsuario();//necesito meter en arraylist si hago SELECT en clase DAO
+            usuarios=udao.loginUsuario();
 
               
         } catch (ClassNotFoundException ex) {
@@ -60,10 +58,10 @@ public class PrimaryController {
         
         for(int i=0; i<usuarios.size(); i++){
             if (txtUsername.getText().equals(usuarios.get(i).getNombre_usuario()) && txtPassword.getText().equals(usuarios.get(i).getPassword())){
-                App.setUsuario(usuarios.get(i));//usuario que proviene del arraylist
+                App.setUsuario(usuarios.get(i));
                 App.verPanel();
                 Alert_Util_1.mostrarInfo(String.valueOf("Has iniciado sesión como "+App.user.getNombre_usuario()));
-                salir=true; //salir del for
+                salir=true;
             }
         }
         

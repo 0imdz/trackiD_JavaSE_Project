@@ -18,10 +18,21 @@ public class Usuario {
     private String pregunta;
     private String respuesta;
     
+    /**
+     *
+     */
     public Usuario(){
         
     }
 
+    /**
+     *
+     * @param idusuario
+     * @param nombre_usuario
+     * @param password
+     * @param pregunta
+     * @param respuesta
+     */
     public Usuario(int idusuario, String nombre_usuario, String password, String pregunta, String respuesta) {
         this.idusuario = idusuario;
         this.nombre_usuario = nombre_usuario;
@@ -30,61 +41,100 @@ public class Usuario {
         this.respuesta = respuesta;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdusuario() {
         return idusuario;
     }
 
+    /**
+     *
+     * @param idusuario
+     */
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre_usuario() {
         return nombre_usuario;
     }
 
+    /**
+     *
+     * @param nombre_usuario
+     */
     public void setNombre_usuario(String nombre_usuario) {
         this.nombre_usuario = nombre_usuario;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPregunta() {
         return pregunta;
     }
 
+    /**
+     *
+     * @param pregunta
+     */
     public void setPregunta(String pregunta) {
         this.pregunta = pregunta;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getRespuesta() {
         return respuesta;
     }
 
+    /**
+     *
+     * @param respuesta
+     */
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
     }
-    
-    //nombre de usuario mayor o igual a seis
+
+    /**
+     * Método que checkea la correcta introducción de un nombre de usuario válido
+     * @param nombre_usuario
+     * @return
+     */
     public boolean checkNombre(String nombre_usuario){
        return nombre_usuario.length() >= 6;
     }
-    
-//    //email 
-//    public boolean checkEmail(String correo){
-//        //return email.matches("@+");
-//        boolean ok = false;
-//        if (correo.matches("[-\\w\\.]+@\\w+\\.\\w+")) 
-//            ok = true;
-//        return ok;
-//    }
-    
-    //password mayor o igual a ocho
+
+    /**
+     * Método que checkea la correcta introducción de un nombre de usuario válido
+     * @param password
+     * @return
+     */
     public boolean checkPassword(String password){
         return password.matches(".*[A-Z].*") && password.length() >= 8;
     }

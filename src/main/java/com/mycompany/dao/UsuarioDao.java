@@ -5,10 +5,11 @@
  */
 package com.mycompany.dao;
 
-import com.mycompany.models.Lanzamiento;
+import com.mycompany.mavenproject1.App;
 import com.mycompany.models.Usuario;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,30 +17,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
- *
+ * Clase que conecta con la tabla Usuario de la base de datos
  * @author Ismael
  */
 public class UsuarioDao {
     private Connection conexion;
    
-    
+    /**
+     * Establecimiento de parámetros necesarios para que se efectúe la conexión con la base de datos
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws IOException
+     */
     public void conectar() throws ClassNotFoundException, SQLException, IOException{
-        String host="localhost";
-        String port="3306";
-        String dbname="trackid";
-        String username="root";
-        String password="DBISMAELMARIA99";
-        //El connection String quedaría así=jdbc:mariadb://localhost:3306/blockbuster/?serverTimeZone=UTC
+        Properties configuration = new Properties();
+        configuration.load(new FileInputStream(new File(App.class.getResource("connectionDB.properties").getPath())));
+        String host = configuration.getProperty("host");
+        String port = configuration.getProperty("port");
+        String dbname = configuration.getProperty("name");
+        String username = configuration.getProperty("username");
+        String password = configuration.getProperty("password");
+        
         conexion=DriverManager.getConnection("jdbc:mariadb://"+host+":"+port+"/"+dbname
                                              +"?serverTimezone=UTC", username, password);
     }
     
+    /**
+     * Cierre de conexión con la base de datos
+     * @throws SQLException
+     */
     public void desconexion () throws SQLException{
         conexion.close();
     }
     
+    /**
+     * Método que realiza el inicio de sesión mediante consulta a la base de datos Usuario
+     * @return
+     * @throws SQLException
+     */
     public List<Usuario> loginUsuario() throws SQLException {
         
         List<Usuario> usuarios = new ArrayList<>();
@@ -63,6 +81,11 @@ public class UsuarioDao {
     return usuarios;   
     }
     
+    /**
+     * Método que realiza el registro mediante consulta a la base de datos Usuario
+     * @param u
+     * @throws SQLException
+     */
     public void registroUsuario(Usuario u) throws SQLException{
         String sql = "INSERT INTO trackid.usuario (NOMBRE_USUARIO, PASSWORD, PREGUNTA_SEGURIDAD, RESPUESTA_SEGURIDAD) VALUES(?,?,?,?)";
 

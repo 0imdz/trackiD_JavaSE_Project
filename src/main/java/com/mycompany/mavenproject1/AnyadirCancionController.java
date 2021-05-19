@@ -42,6 +42,7 @@ import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
+ * Clase controller del proceso de añadido de los parámetros de la canción
  *
  * @author Ismael
  */
@@ -81,7 +82,7 @@ public class AnyadirCancionController {
         txtTitulo.setText("");
         txtAutoria.setText("");
         cbGenero.setValue("");
-        dpCalendario.setValue(java.time.LocalDate.now()); //se pone a fecha de hoy
+        dpCalendario.setValue(java.time.LocalDate.now()); 
         txtSello.setText("");
         txtDuracion.setText("");
         txtExplicit.setText("");
@@ -91,15 +92,6 @@ public class AnyadirCancionController {
     @FXML
     private void insercionCanciones() throws IOException{
         LanzamientoDao ldao = new LanzamientoDao();
-//        if (this.txtTitulo == null ||
-//            this.txtAutoria == null ||
-//            this.cbGenero == null ||
-//            this.txtSello == null ||
-//            this.txtExplicit == null ||
-//            this.txtDuracion == null ||
-//            this.dpCalendario == null) {
-//            Alert_Util_1.mostrarInfo("No se permiten campos en blanco."); //duda: no funciona
-//        }
         Cancion c = new Cancion(
                 -1,
                 txtTitulo.getText(), 
@@ -107,16 +99,16 @@ public class AnyadirCancionController {
                 cbGenero.getValue().toString(), 
                 Date.valueOf(dpCalendario.getValue()), 
                 txtSello.getText(),
-                App.user.getIdusuario(), //idusuario que esté con la sesión iniciada
+                App.user.getIdusuario(),
                 txtExplicit.getText(), 
                 Integer.parseInt(txtDuracion.getText()),
                 lblRuta.getText(),
                 lblRutaimagen.getText()
         );
         try {
-            ldao.conectar();//conexión a base de datos
-            ldao.guardarCancion(c); //para guardar uso de guardarCancion de CancionDao. todo lo guardo en objeto c.
-            showCanciones();//refresco: vuelve a ejecutar la función que muestra todas las canciones de un usuario
+            ldao.conectar();
+            ldao.guardarCancion(c);
+            showCanciones();
             
         } catch (ClassNotFoundException ex) {
             Alert_Util_1.mostrarError(ex.getMessage());
@@ -125,12 +117,17 @@ public class AnyadirCancionController {
         }
     }
     
-    public void showCanciones() throws IOException{//no es @FXML, pq está inicilizado
+    /**
+     * Método que muestra las canciones contenidas en la base de datos Canciones. 
+     * Para poder manejarlas usaremos un arraylist en la aplicación Java
+     * @throws IOException
+     */
+    public void showCanciones() throws IOException{
         LanzamientoDao ldao = new LanzamientoDao();
         List<Cancion> canciones=new ArrayList<Cancion>();
         try {
-            ldao.conectar();//meter try-catch
-            canciones=ldao.listCancion(App.user.getIdusuario()); //llamada a getIdusuario
+            ldao.conectar();
+            canciones=ldao.listCancion(App.user.getIdusuario()); 
             tblCanciones.setItems(FXCollections.observableList(canciones));
             
         } catch (ClassNotFoundException ex) {
@@ -140,18 +137,23 @@ public class AnyadirCancionController {
         }
     }
 
+    /**
+     * Se carga el comboBox cbGenero con los diferentes géneros que trackiD permite.
+     * Estos aparecen almacenados en una clase enum (Género), la cual aparecerá como
+     * clase de un ObservableList de nombre generos.
+     */
     public void initLists(){
         cbGenero.setItems(generos);
     }
-    
-    //AUDIO
+
+    /**
+     * LECTURA FICHERO DE AUDIO (.MP3, .WAV)
+     */
     public void leerFichero(){
         
         FileChooser dialogoFichero = new FileChooser();
         dialogoFichero.setTitle("Selecciona un fichero");
         File fAbrir = dialogoFichero.showOpenDialog(null);
-//        dialogoFichero.setText(f.getAbsolutePath());
-//        File fGuardar = dialogoFichero.showSaveDialog(null);
 
         if (fAbrir != null) {
             lblRuta.setText(fAbrir.getName());
@@ -163,8 +165,10 @@ public class AnyadirCancionController {
             }
         }  
     }
-    
-    //IMAGEN
+
+    /**
+     * LECTURA DE FICHERO DE IMAGEN (.JPG, .PNG, .GIF)
+     */
     public void leerFicheroImagen(){
         
         FileChooser dialogoFichero1 = new FileChooser();
@@ -175,21 +179,22 @@ public class AnyadirCancionController {
             lblRutaimagen.setText(fAbrir1.getName());
             try {
                 Files.copy(fAbrir1.toPath(), (new File(System.getProperty("user.dir")+"/images/" + fAbrir1.getName())).toPath(),
-                        StandardCopyOption.REPLACE_EXISTING); //copia
+                        StandardCopyOption.REPLACE_EXISTING); 
             } catch (IOException ex) {
                 Logger.getLogger(AnyadirCancionController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } 
     }
     
+    /**
+     * LECTURA DE FICHERO DE TEXTO (.TXT)
+     */
     public void leerFicheroNormal(){
         LanzamientoDao ldao = new LanzamientoDao();
         Cancion c;
         FileChooser dialogoFichero = new FileChooser();
         dialogoFichero.setTitle("Selecciona un fichero");
         File fAbrir = dialogoFichero.showOpenDialog(null);
-        //labelFichero.setText(f.getAbsolutePath());
-        //File fGuardar = dialogoFichero.showSaveDialog(null);
 
         if (fAbrir != null) {
             try {
@@ -202,10 +207,9 @@ public class AnyadirCancionController {
                     if(Cancion.comprobacion(canciones_1)){
                         c=new Cancion(canciones_1);
                         try {
-                        ldao.conectar();//conexión a base de datos
-                        ldao.guardarCancion(c); //para guardar uso de guardarCancion de CancionDao. todo lo guardo en objeto c.
+                        ldao.conectar();
+                        ldao.guardarCancion(c); 
                         
-            
                         } catch (ClassNotFoundException ex) {
                             Alert_Util_1.mostrarError(ex.getMessage());
                         } catch (SQLException ex) {
@@ -213,9 +217,8 @@ public class AnyadirCancionController {
                         }
                     }
                 }
-                //TODO leerlo y cargar los articulos
                 lector.close();
-                showCanciones();//refresco: vuelve a ejecutar la función que muestra todas las canciones de un usuario
+                showCanciones();
                 
             } catch (IOException ex) {
                 System.out.println("Excepción capturada");
