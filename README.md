@@ -9,3 +9,4 @@ plataforma intermediaria.*
 ![panel_usuario](images/3.png)
 ![nuevo_lanzamiento](images/4.png)
 ![nuevo_lanzamiento_2](images/5.png)
+![nuevo_lanzamiento_3](images/6.png)
