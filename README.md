@@ -24,7 +24,7 @@ actualización y consulta de datos :white_check_mark:
 - Inclusión de listado de pruebas funcionales :white_check_mark:
 
 
-# Interfaz trackiD
+# About
 
 *trackiD es una aplicación de escritorio que recrea el proceso de distribución de música en las 
 diferentes plataformas digitales, ya que para subir contenido a éstas, es necesaria una 
