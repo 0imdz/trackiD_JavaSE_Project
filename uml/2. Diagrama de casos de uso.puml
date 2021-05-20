@@ -1,18 +1,19 @@
 @startuml
 left to right direction
-:Usuario: --(Anyadir cancion)
-:Usuario: --(Ver lista de canciones)
 :BBDD: --(Anyadir cancion)
 :BBDD: --(Actualizar cancion)
 :BBDD: --(Borrar cancion)
-usecase UC1 as "Seleccion de cancion 
+usecase UC1 as "Login o registro 
 --
 Include: Borrar cancion
 --
 Include: Actualizar cancion
 --
-Include: Ver detalles de cancion"
+Include: Ver detalles de cancion
+--
+Include: Ver lista de canciones"
 
 :Usuario: --> (UC1)
+:BBDD: --> (UC1)
 
 @enduml
