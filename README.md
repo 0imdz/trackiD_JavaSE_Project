@@ -1,6 +1,6 @@
 # About
 
-*trackiD es una aplicación de escritorio que recrea el proceso de distribución musical en las 
+*trackiD es una aplicación de escritorio que simula de forma local el proceso de distribución musical en las 
 diferentes plataformas digitales.*
 
 *trackiD permite crear y acceder a una biblioteca de música personal donde el usuario podrá reproducir la música previamente almacenada.*
@@ -14,8 +14,8 @@ diferentes plataformas digitales.*
 
 # Contenido del proyecto
 
-- Diseño de la aplicación incluyendo diagrama de clases, casos de uso, de 
-secuencia y/o estados según aplique 
+- Diseño de la aplicación: diagrama de clases, casos de uso y de 
+secuencia
 - Diseño lógico relacional de la base de datos, siguiendo un esquema 
 normalizado 
 - Uso de la herencia de clases y clases abstractas 
