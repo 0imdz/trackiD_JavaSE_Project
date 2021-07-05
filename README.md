@@ -1,9 +1,9 @@
 # About
 
 *trackiD es una aplicación de escritorio que recrea el proceso de distribución musical en las 
-diferentes plataformas digitales.
+diferentes plataformas digitales.*
 
-trackiD permite crear y acceder a una biblioteca de música personal donde el usuario podrá reproducir la música previamente almacenada.*
+*trackiD permite crear y acceder a una biblioteca de música personal donde el usuario podrá reproducir la música previamente almacenada.*
 
 ![inicio_sesion](images/1.png)
 ![registro](images/2.png)
